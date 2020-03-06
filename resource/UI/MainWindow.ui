@@ -104,8 +104,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_System</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>os()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>14</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>kms_active()</slot>
+  <slot>os()</slot>
  </slots>
 </ui>

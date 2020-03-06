@@ -15,6 +15,7 @@ from PySide2.QtGui import Qt
 # 自己的包
 from UI2PY.MainWindow import Ui_MainWindow
 from UI2PY.KMS_Active import Ui_Form as KMS_Active_Form
+from UI2PY.OS import Ui_Form as OS_Form
 
 
 class MyWindow(QMainWindow):
@@ -26,6 +27,9 @@ class MyWindow(QMainWindow):
         self.KMSActive = KMSActive()
         self.KMSActive.setWindowModality(Qt.ApplicationModal)  # 设置为模态窗口
 
+        self.OS = OS()
+        self.OS.setWindowModality(Qt.ApplicationModal)  # 设置为模态窗口
+
         self.setup()
 
     def setup(self):
@@ -35,11 +39,14 @@ class MyWindow(QMainWindow):
     def kms_active(self):
         self.KMSActive.show()
 
+    def os(self):
+        self.OS.show()
 
 
 class KMSActive(QWidget, KMS_Active_Form):
     def __init__(self):
         super(KMSActive, self).__init__()
+        self.PublicFunctions = PublicFunctions()
         self.setupUi(self)
         self.setup()
 
@@ -57,7 +64,7 @@ class KMSActive(QWidget, KMS_Active_Form):
         self.textBrowser.setText(output_str)
 
     def office_version(self):
-        software_name = self.find_software()
+        software_name = self.PublicFunctions.find_software()
         keys = software_name.keys()
         text = ''
         self.textBrowser.clear()
@@ -80,6 +87,34 @@ class KMSActive(QWidget, KMS_Active_Form):
         self.textBrowser.setText(str(version))
 
     # 静态函数
+    @staticmethod
+    def find_office_path():
+        sub_key = r'SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\EXCEL.EXE'
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, sub_key, 0, winreg.KEY_READ)
+        value = winreg.QueryValueEx(key, 'Path')
+        return value[0]
+
+
+class OS(QWidget, OS_Form):
+    def __init__(self):
+        super(OS, self).__init__()
+        self.PublicFunctions = PublicFunctions()
+        self.setupUi(self)
+        self.setup()
+
+    def setup(self):
+        pass
+
+    # 槽函数
+    def software_list(self):
+        software_list = self.PublicFunctions.find_software()
+        text = ''
+        for key, value in software_list.items():
+            text = text + key + '    ' + value + '\n'
+        self.textBrowser.setText(text)
+
+
+class PublicFunctions():
     @staticmethod
     def find_software():
         sub_key = [r'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall',
@@ -104,13 +139,6 @@ class KMSActive(QWidget, KMS_Active_Form):
             software_name_sorted[i] = software_name[i]
 
         return software_name_sorted
-
-    @staticmethod
-    def find_office_path():
-        sub_key = r'SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\EXCEL.EXE'
-        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, sub_key, 0, winreg.KEY_READ)
-        value = winreg.QueryValueEx(key, 'Path')
-        return value[0]
 
 
 if __name__ == '__main__':

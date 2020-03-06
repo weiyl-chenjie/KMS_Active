@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69942a32-5ba0-4256-9f4b-3565aa862955" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI2PY/KMS_Active.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI2PY/KMS_Active.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI2PY/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI2PY/MainWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/UI/KMS_Active.ui" beforeDir="false" afterPath="$PROJECT_DIR$/resource/UI/KMS_Active.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource/UI/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/resource/UI/MainWindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,12 +17,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
+            <state relative-caret-position="247">
+              <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
               <folding>
                 <element signature="e#78#87#0" expanded="true" />
-                <element signature="e#366#747#0" />
-                <element signature="e#369#626#0" />
+                <element signature="e#1007#1285#0" />
+                <element signature="e#1288#1644#0" />
+                <element signature="e#1683#1898#0" />
+                <element signature="e#1991#2093#0" />
               </folding>
             </state>
           </provider>
@@ -83,6 +82,11 @@
               <item name="resource" type="462c0819:PsiDirectoryNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ToolBox" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ToolBox" type="462c0819:PsiDirectoryNode" />
+              <item name="UI2PY" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -97,7 +101,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -158,7 +162,7 @@
       <workItem from="1583385737832" duration="1596000" />
       <workItem from="1583387338779" duration="1630000" />
       <workItem from="1583398217113" duration="1911000" />
-      <workItem from="1583455353519" duration="9451000" />
+      <workItem from="1583455353519" duration="11100000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1583386799284</created>
@@ -216,22 +220,29 @@
       <option name="project" value="LOCAL" />
       <updated>1583478766023</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge branch 'master' of https://github.com/weiyl-chenjie/KMS_Active&#10;&#10;# Conflicts:&#10;#&#9;1.py">
+      <created>1583496139384</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583496139384</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17071000" />
+    <option name="totallyTimeSpent" value="18720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25670242" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26407507" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49865952" visible="true" weight="0.32719547" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49865952" weight="0.32719547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39886847" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -240,7 +251,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49865952" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.32577905" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932975" weight="0.32577905" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49932975" visible="true" weight="0.32577905" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32956153" />
       <window_info anchor="bottom" id="GitHub Pull Requests" order="14" weight="0.3286119" />
@@ -262,7 +273,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/KMS_Active$main.coverage" NAME="main Coverage Results" MODIFIED="1583452502559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ToolBox$main.coverage" NAME="main Coverage Results" MODIFIED="1583496029223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ToolBox$main.coverage" NAME="main Coverage Results" MODIFIED="1583497715683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/KMS_Active_py.py">
@@ -280,12 +291,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
+        <state relative-caret-position="247">
+          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
           <folding>
             <element signature="e#78#87#0" expanded="true" />
-            <element signature="e#366#747#0" />
-            <element signature="e#369#626#0" />
+            <element signature="e#1007#1285#0" />
+            <element signature="e#1288#1644#0" />
+            <element signature="e#1683#1898#0" />
+            <element signature="e#1991#2093#0" />
           </folding>
         </state>
       </provider>
