@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'MainWindow.ui',
 # licensing of 'MainWindow.ui' applies.
 #
-# Created: Fri Mar  6 15:11:47 2020
+# Created: Fri Mar  6 16:08:22 2020
 #      by: pyside2-uic  running on PySide2 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QObject.connect(self.pushButton_KMS_Active, QtCore.SIGNAL("clicked()"), MainWindow.kmsActive)
+        QtCore.QObject.connect(self.pushButton_KMS_Active, QtCore.SIGNAL("clicked()"), MainWindow.kms_active)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
