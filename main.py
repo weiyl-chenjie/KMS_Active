@@ -7,6 +7,7 @@
 # Python自带库
 import os
 import sys
+import subprocess
 import winreg  # 操作注册表的库
 import platform
 # 第三方库
@@ -55,11 +56,14 @@ class KMSActive(QWidget, KMS_Active_Form):
 
     # 槽函数
     def office_active(self):
-        cmd = r'cd /d ' + self.find_office_path()
-        cmd = cmd + ' & ' + 'cscript ospp.vbs /sethst:10.40.210.223 & cscript ospp.vbs /act'
+        self.textBrowser.setText('正在激活office,请稍后...')
+        cwd = self.find_office_path()  # office所在的路径
+        # cmd = 'cscript ospp.vbs /sethst:10.40.210.223&cscript ospp.vbs /act'
+        cmd = 'cscript ospp.vbs /sethst:10.40.254.182&cscript ospp.vbs /act'
         # print(cmd)
-        res = os.popen(cmd)
-        output_str = res.read()
+        res = subprocess.run(cmd, shell=True, capture_output=True, cwd=cwd)
+        # print('res:', res.stderr)
+        output_str = res.stdout.decode(encoding=("gbk"))
         # print(output_str)
         self.textBrowser.setText(output_str)
 
@@ -75,9 +79,13 @@ class KMSActive(QWidget, KMS_Active_Form):
         self.textBrowser.setText(text)
 
     def os_active(self):
-        cmd = r'cd / d "%SystemRoot%\system32" & slmgr /kms 10.40.210.223 & slmgr /ato & slmgr /xpr'
-        res = os.popen(cmd)
-        output_str = res.read()
+        self.textBrowser.setText('正在激活操作系统，请稍后...')
+        # cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.210.223&slmgr /ato&slmgr /xpr'
+        cwd = "%SystemRoot%\system32"
+        cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.254.182&slmgr /ato&slmgr /xpr'
+        res = subprocess.run(cmd, shell=True, capture_output=True)
+        print('res：', res)
+        output_str = res.stdout.decode(encoding=("gbk"))
         # print(output_str)
         self.textBrowser.setText(output_str)
 
@@ -114,7 +122,7 @@ class OS(QWidget, OS_Form):
         self.textBrowser.setText(text)
 
 
-class PublicFunctions():
+class PublicFunctions:
     @staticmethod
     def find_software():
         sub_key = [r'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall',
