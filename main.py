@@ -61,8 +61,8 @@ class KMSActive(QWidget, KMS_Active_Form):
         # cmd = 'cscript ospp.vbs /sethst:10.40.210.223&cscript ospp.vbs /act'
         cmd = 'cscript ospp.vbs /sethst:10.40.254.182&cscript ospp.vbs /act'
         # print(cmd)
-        res = subprocess.run(cmd, shell=True, capture_output=True, cwd=cwd)
-        # print('res:', res.stderr)
+        res = subprocess.run(cmd, shell=True, capture_output=True, stdin=subprocess.PIPE, cwd=cwd)
+
         output_str = res.stdout.decode(encoding=("gbk"))
         # print(output_str)
         self.textBrowser.setText(output_str)
@@ -83,8 +83,8 @@ class KMSActive(QWidget, KMS_Active_Form):
         # cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.210.223&slmgr /ato&slmgr /xpr'
         cwd = "%SystemRoot%\system32"
         cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.254.182&slmgr /ato&slmgr /xpr'
-        res = subprocess.run(cmd, shell=True, capture_output=True)
-        print('res：', res)
+        res = subprocess.run(cmd, shell=True, capture_output=True, stdin=subprocess.PIPE)
+
         output_str = res.stdout.decode(encoding=("gbk"))
         # print(output_str)
         self.textBrowser.setText(output_str)
