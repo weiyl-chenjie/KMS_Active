@@ -57,6 +57,7 @@ class KMSActive(QWidget, KMS_Active_Form):
     # 槽函数
     def office_active(self):
         self.textBrowser.setText('正在激活office,请稍后...')
+        QApplication.processEvents()
         cwd = self.find_office_path()  # office所在的路径
         # cmd = 'cscript ospp.vbs /sethst:10.40.210.223&cscript ospp.vbs /act'
         cmd = 'cscript ospp.vbs /sethst:' + self.lineEdit_IP.text() + '&cscript ospp.vbs /act'
@@ -80,6 +81,7 @@ class KMSActive(QWidget, KMS_Active_Form):
 
     def os_active(self):
         self.textBrowser.setText('正在激活操作系统，请稍后...')
+        QApplication.processEvents()
         # cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.210.223&slmgr /ato&slmgr /xpr'
         cwd = "%SystemRoot%\system32"
         cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms ' + self.lineEdit_IP.text() + '&slmgr /ato&slmgr /xpr'
