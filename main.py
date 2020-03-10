@@ -136,6 +136,16 @@ class OS(QWidget, OS_Form):
             text = text + key + '    ' + value + '\n'
         self.textBrowser.setText(text)
 
+    def software_search(self):
+        software_name = self.PublicFunctions.find_software()
+        keys = software_name.keys()
+        text = ''
+        self.textBrowser.clear()
+        for key in keys:
+            if self.lineEdit.text().upper() in key.upper():
+                # print(key, ":", software_name[key])
+                text = text + key + ":" + software_name[key] + '\n'
+        self.textBrowser.setText(text)
 
 class PublicFunctions:
     @staticmethod

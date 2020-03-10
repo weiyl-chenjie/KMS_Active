@@ -36,6 +36,40 @@
     </rect>
    </property>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>40</y>
+     <width>385</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>华文楷体</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>要查找的软件：</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_Search">
+      <property name="text">
+       <string>查寻</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -55,8 +89,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_Search</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>software_search()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>585</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>702</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>software_list()</slot>
+  <slot>software_search()</slot>
  </slots>
 </ui>
