@@ -82,6 +82,39 @@ p, li { white-space: pre-wrap; }
     <string>office版本</string>
    </property>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>20</y>
+     <width>357</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>KMS服务器:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_IP">
+      <property name="echoMode">
+       <enum>QLineEdit::Normal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_Set_IP">
+      <property name="text">
+       <string>设置为当前值</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -149,11 +182,28 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_Set_IP</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>set_ip()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>698</x>
+     <y>34</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>office_active()</slot>
   <slot>os_active()</slot>
   <slot>office_version()</slot>
   <slot>os_version()</slot>
+  <slot>set_ip()</slot>
  </slots>
 </ui>

@@ -5,7 +5,7 @@
 # Edition:V1.0.0
 
 # Python自带库
-import os
+import re  # 正则表达式
 import sys
 import subprocess
 import winreg  # 操作注册表的库
@@ -52,14 +52,14 @@ class KMSActive(QWidget, KMS_Active_Form):
         self.setup()
 
     def setup(self):
-        pass
+        self.lineEdit_IP.setText('10.40.254.182')
 
     # 槽函数
     def office_active(self):
         self.textBrowser.setText('正在激活office,请稍后...')
         cwd = self.find_office_path()  # office所在的路径
         # cmd = 'cscript ospp.vbs /sethst:10.40.210.223&cscript ospp.vbs /act'
-        cmd = 'cscript ospp.vbs /sethst:10.40.254.182&cscript ospp.vbs /act'
+        cmd = 'cscript ospp.vbs /sethst:' + self.lineEdit_IP.text() + '&cscript ospp.vbs /act'
         # print(cmd)
         res = subprocess.run(cmd, shell=True, capture_output=True, stdin=subprocess.PIPE, cwd=cwd)
 
@@ -82,7 +82,7 @@ class KMSActive(QWidget, KMS_Active_Form):
         self.textBrowser.setText('正在激活操作系统，请稍后...')
         # cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.210.223&slmgr /ato&slmgr /xpr'
         cwd = "%SystemRoot%\system32"
-        cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms 10.40.254.182&slmgr /ato&slmgr /xpr'
+        cmd = r'cd / d "%SystemRoot%\system32"&slmgr /skms ' + self.lineEdit_IP.text() + '&slmgr /ato&slmgr /xpr'
         res = subprocess.run(cmd, shell=True, capture_output=True, stdin=subprocess.PIPE)
 
         output_str = res.stdout.decode(encoding=("gbk"))
@@ -94,6 +94,19 @@ class KMSActive(QWidget, KMS_Active_Form):
         # print(version)
         self.textBrowser.setText(str(version))
 
+    def set_ip(self):  # 当点击了“设置为当前值”按钮时，ping一下当前IP
+        ip = self.lineEdit_IP.text()
+        if self.PublicFunctions.is_ip(ip):
+            self.textBrowser.setText('Ping一下服务器，请稍后...')
+            QApplication.processEvents()
+            cmd = r'ping ' + self.lineEdit_IP.text()
+            res = subprocess.run(cmd, shell=True, capture_output=True, stdin=subprocess.PIPE)
+
+            output_str = res.stdout.decode(encoding=("gbk"))
+            # print(output_str)
+            self.textBrowser.setText(output_str)
+        else:
+            self.textBrowser.setText('输入的不是一个合法的IP')
     # 静态函数
     @staticmethod
     def find_office_path():
@@ -129,24 +142,35 @@ class PublicFunctions:
                    r'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall']
         software_name = {}  # 软件信息以字典的方式存储，存储格式为‘软件名称’：‘软件版本’
         software_name_sorted = {}  # 排序后的软件信息
-        for i in sub_key:
-            key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, i, 0, winreg.KEY_ALL_ACCESS)
-            for j in range(0, winreg.QueryInfoKey(key)[0] - 1):
-                try:
-                    key_name = winreg.EnumKey(key, j)
-                    key_path = i + '\\' + key_name
-                    each_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path, 0, winreg.KEY_ALL_ACCESS)
-                    DisplayName, REG_SZ = winreg.QueryValueEx(each_key, 'DisplayName')
-                    DisplayVersion, REG_SZ_ = winreg.QueryValueEx(each_key, 'DisplayVersion')
-                    if DisplayName not in software_name.keys():
-                        software_name[DisplayName] = DisplayVersion
-                except WindowsError:
-                    pass
+        try:
+            for i in sub_key:
+                key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, i, 0, winreg.KEY_ALL_ACCESS)
+                for j in range(0, winreg.QueryInfoKey(key)[0] - 1):
+                    try:
+                        key_name = winreg.EnumKey(key, j)
+                        key_path = i + '\\' + key_name
+                        each_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path, 0, winreg.KEY_ALL_ACCESS)
+                        DisplayName, REG_SZ = winreg.QueryValueEx(each_key, 'DisplayName')
+                        DisplayVersion, REG_SZ_ = winreg.QueryValueEx(each_key, 'DisplayVersion')
+                        if DisplayName not in software_name.keys():
+                            software_name[DisplayName] = DisplayVersion
+                    except WindowsError:
+                        pass
+        except Exception as ex:
+            print(ex)
         # 排序
         for i in sorted(software_name):
             software_name_sorted[i] = software_name[i]
 
         return software_name_sorted
+
+    @staticmethod
+    def is_ip(str_to_confirm):
+        p = re.compile('^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$')
+        if p.match(str_to_confirm):
+            return True
+        else:
+            return False
 
 
 if __name__ == '__main__':
